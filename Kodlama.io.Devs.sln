@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "kodlama.io.devs\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Persistence", "corePackages\Core.Persistence\Core.Persistence.csproj", "{79099EDA-72F6-4121-B53E-A3D8ED04C92F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns", "corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj", "{31B7950B-71F8-48EE-8770-C261522506A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Application", "corePackages\Core.Application\Core.Application.csproj", "{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{79099EDA-72F6-4121-B53E-A3D8ED04C92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79099EDA-72F6-4121-B53E-A3D8ED04C92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79099EDA-72F6-4121-B53E-A3D8ED04C92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B7950B-71F8-48EE-8770-C261522506A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B7950B-71F8-48EE-8770-C261522506A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B7950B-71F8-48EE-8770-C261522506A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B7950B-71F8-48EE-8770-C261522506A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +76,8 @@ Global
 		{BE14B34A-68D0-4A0D-9BA3-212826B05FC8} = {06A16BAF-3A8F-461C-9492-65D36E6BC3F6}
 		{DDFD089A-932D-4DCB-AEE2-5D9302C24949} = {2D8612C8-FFE8-4383-B5C6-770255A8204E}
 		{79099EDA-72F6-4121-B53E-A3D8ED04C92F} = {BE14B34A-68D0-4A0D-9BA3-212826B05FC8}
+		{31B7950B-71F8-48EE-8770-C261522506A3} = {BE14B34A-68D0-4A0D-9BA3-212826B05FC8}
+		{3F8C36B9-59FC-4595-BD6A-A1C75ACFA797} = {BE14B34A-68D0-4A0D-9BA3-212826B05FC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F4721A7-B439-4C46-9A73-96C611D1B617}

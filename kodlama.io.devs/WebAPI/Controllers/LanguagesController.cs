@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Features.CreateLanguage.Commands.CreateLanguage;
+using Application.Features.CreateLanguage.Dtos;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +8,13 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LanguagesController : ControllerBase
+    public class LanguagesController : BaseController
     {
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] CreateLanguageCommand createLanguageCommand)
+        {
+            CreatedLanguageDto result = await Mediator!.Send(createLanguageCommand);
+            return Created("",result);
+        }
     }
 }
