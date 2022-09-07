@@ -17,6 +17,7 @@ public class MappingProfile : Profile
         CreateMap<Language , DeleteLanguageCommand>().ReverseMap();
         CreateMap<Language , UpdateLanguageCommand>().ReverseMap();
         CreateMap<Language , LanguageListDto>().ReverseMap();
+        CreateMap<Language , LanguageGetByIdDto>().ReverseMap();
         CreateMap<Language , DeletedLanguageDto>().ReverseMap();
         CreateMap<Language , CreatedLanguageDto>().ReverseMap();
         CreateMap<Language , UpdatedLanguageDto>().ReverseMap();

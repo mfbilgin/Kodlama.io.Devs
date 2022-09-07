@@ -3,6 +3,7 @@ using Application.Features.CreateLanguage.Commands.DeleteLanguage;
 using Application.Features.CreateLanguage.Commands.UpdateLanguage;
 using Application.Features.CreateLanguage.Dtos;
 using Application.Features.CreateLanguage.Models;
+using Application.Features.CreateLanguage.Queries.GetByIdLanguage;
 using Application.Features.CreateLanguage.Queries.GetListLanguage;
 using Core.Application.Requests;
 using MediatR;
@@ -37,9 +38,16 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
             GetListLanguageQuery getListBrandQuery = new() { PageRequest = pageRequest };
-            LanguageListModel result = await Mediator.Send(getListBrandQuery);
+            LanguageListModel result = await Mediator!.Send(getListBrandQuery);
             return Ok(result);
 
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdLanguageQuery getByIdLanguageQuery)
+        {
+            LanguageGetByIdDto result = await Mediator!.Send(getByIdLanguageQuery);
+            return Ok(result);
         }
     }
 }
