@@ -5,10 +5,9 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.CreateLanguage.Commands.CreateLanguage;
+namespace Application.Features.CreateLanguage.Commands.DeleteLanguage;
 
-public class CreateLanguageCommand : IRequest<CreatedLanguageDto>
+public class DeleteLanguageCommand : IRequest<DeletedLanguageDto>
 {
-    public string? Name { get; set; }
-    
+    public int Id { get; set; }
 }

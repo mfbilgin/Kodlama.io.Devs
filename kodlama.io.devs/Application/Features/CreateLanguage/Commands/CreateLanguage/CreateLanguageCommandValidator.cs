@@ -6,6 +6,6 @@ public class CreateLanguageCommandValidator : AbstractValidator<CreateLanguageCo
 {
     public CreateLanguageCommandValidator()
     {
-        RuleFor(language => language.Name).NotEmpty().WithMessage("Dil adı boş geçilemez.");
+        RuleFor(language => language.Name).NotEmpty().WithMessage("Language name not be empty.");
     }
 }

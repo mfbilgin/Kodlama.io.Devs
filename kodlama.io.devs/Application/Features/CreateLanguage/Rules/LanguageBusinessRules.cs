@@ -18,4 +18,8 @@ public class LanguageBusinessRules
         IPaginate<Language> result = await _languageRepository.GetListAsync(language => language.Name== name);
         if (result.Items.Any()) throw new BusinessException("Brand name exists.");
     }
+    public async Task LanguageShouldExistWhenRequested(Language language)
+    {
+        if (language == null) throw new BusinessException("Requested language does not exist.");
+    }
 }

@@ -5,10 +5,10 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.CreateLanguage.Commands.CreateLanguage;
+namespace Application.Features.CreateLanguage.Commands.UpdateLanguage;
 
-public class CreateLanguageCommand : IRequest<CreatedLanguageDto>
+public class UpdateLanguageCommand : IRequest<UpdatedLanguageDto>
 {
+    public int Id { get; set; }
     public string? Name { get; set; }
-    
 }
