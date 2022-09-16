@@ -1,10 +1,10 @@
-﻿using Application.Features.CreateLanguage.Commands.CreateLanguage;
-using Application.Features.CreateLanguage.Commands.DeleteLanguage;
-using Application.Features.CreateLanguage.Commands.UpdateLanguage;
-using Application.Features.CreateLanguage.Dtos;
-using Application.Features.CreateLanguage.Models;
-using Application.Features.CreateLanguage.Queries.GetByIdLanguage;
-using Application.Features.CreateLanguage.Queries.GetListLanguage;
+﻿using Application.Features.Languages.Commands.CreateLanguage;
+using Application.Features.Languages.Commands.DeleteLanguage;
+using Application.Features.Languages.Commands.UpdateLanguage;
+using Application.Features.Languages.Dtos;
+using Application.Features.Languages.Models;
+using Application.Features.Languages.Queries.GetByIdLanguage;
+using Application.Features.Languages.Queries.GetListLanguage;
 using Core.Application.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -20,25 +20,25 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Add([FromBody] CreateLanguageCommand createLanguageCommand)
         {
             CreatedLanguageDto result = await Mediator!.Send(createLanguageCommand);
-            return Created("",result);
+            return Ok(result);
         }
         [HttpPost("delete")]
         public async Task<IActionResult> Delete([FromQuery] DeleteLanguageCommand deleteLanguageCommand)
         {
             DeletedLanguageDto result = await Mediator!.Send(deleteLanguageCommand);
-            return Created("",result);
+            return Ok(result);
         }
         [HttpPost("update")]
         public async Task<IActionResult> Update([FromBody] UpdateLanguageCommand updateLanguageCommand)
         {
             UpdatedLanguageDto result = await Mediator!.Send(updateLanguageCommand);
-            return Created("",result);
+            return Ok(result);
         }
-        [HttpGet]
+        [HttpGet("getList")]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            GetListLanguageQuery getListBrandQuery = new() { PageRequest = pageRequest };
-            LanguageListModel result = await Mediator!.Send(getListBrandQuery);
+            GetListLanguageQuery getListLanguageQuery = new() { PageRequest = pageRequest };
+            LanguageListModel result = await Mediator!.Send(getListLanguageQuery);
             return Ok(result);
 
         }

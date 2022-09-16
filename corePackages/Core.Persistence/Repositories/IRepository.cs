@@ -6,5 +6,6 @@ namespace Core.Persistence.Repositories
     public interface IRepository<T> : IQuery<T> where T : Entity
     {
         T Get(Expression<Func<T, bool>> predicate);
+        IList<T> GetAll(Expression<Func<T, bool>> predicate  = null);
     }
 }

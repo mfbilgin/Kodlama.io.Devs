@@ -1,9 +1,15 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Application.Features.CreateLanguage.Rules;
+using Application.Features.Auth.Rules;
+using Application.Features.Languages.Rules;
+using Application.Features.LanguageTechnologies.Rules;
+using Application.Services.Auth;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Validation;
+using Core.Security.JWT;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 namespace Application
 {
@@ -16,13 +22,17 @@ namespace Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<LanguageBusinessRules>();
+            services.AddScoped<LanguageTechnologyBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
 
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-
+            services.AddScoped<IAuthService, AuthManager>();
+            services.AddTransient<ITokenHelper, JwtHelper>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             return services;
 
         }

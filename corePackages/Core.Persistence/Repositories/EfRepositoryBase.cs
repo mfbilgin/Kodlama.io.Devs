@@ -53,13 +53,14 @@ namespace Core.Persistence.Repositories
             if (include != null) queryable = include(queryable);
             return await queryable.ToPaginateAsync(index, size, 0, cancellationToken);
         }
+        
 
         public IQueryable<TEntity> Query()
         {
             return Context.Set<TEntity>();
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity) 
         {
             Context.Entry(entity).State = EntityState.Added;
             await Context.SaveChangesAsync();
@@ -83,6 +84,13 @@ namespace Core.Persistence.Repositories
         public TEntity? Get(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().FirstOrDefault(predicate);
+        }
+
+        public IList<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null)
+        {
+            return predicate == null
+                ? Context.Set<TEntity>().ToList()
+                : Context.Set<TEntity>().Where(predicate).ToList();
         }
 
         public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null,
